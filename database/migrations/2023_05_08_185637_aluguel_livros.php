@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('fk_livro')->unsigned();
             $table->bigInteger('fk_user')->unsigned();
+            $table->date('data_limite_devolucao');
+            $table->date('data_devolvido')->nullable();
+            $table->integer('devolvido');
             $table->timestamps();
             $table->foreign('fk_livro')->references('id')->on('livros');
             $table->foreign('fk_user')->references('id')->on('users');

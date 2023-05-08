@@ -9,5 +9,5 @@ class AluguelLivros extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['fk_livro','fk_user'];
+    protected $fillable = ['fk_livro','fk_user', 'data_limite_devolucao', 'data_devolvido', 'devolvido'];
 }

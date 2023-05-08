@@ -65,4 +65,37 @@ class AluguelLivrosController extends Controller
     {
         //
     }
+
+    public function livrosAtrasados(): JsonResponse
+    {
+
+        $alugadosNaoDevolvidos = AluguelLivros::where('devolvido', 0)->select('id')->get();
+
+        foreach ($alugadosNaoDevolvidos as $value) {
+
+            $retiradoEm = AluguelLivros::where('id', $value['id'])->select('created_at')->get();
+
+            foreach ($retiradoEm as $value) {
+
+                dd(print_r($value->date));
+
+            }
+
+        }
+
+
+
+
+        dd($idsNaoDevolvidos);
+        // var_dump($alugadosNaoDevolvidos);
+        //     foreach ($alugadosNaoDevolvidos as $value) {
+        // //    $date = date('YYYY/MM/DD', $alugadosNaoDevolvidos->created_At);
+
+        //        dd($value[0]['attributes']);
+        //     }
+
+
+        //     dd($alugadosNaoDevolvidos[0]['attributes']);
+        //     return response()->json($alugadosNaoDevolvidos);
+    }
 }

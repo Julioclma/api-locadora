@@ -42,8 +42,12 @@ Route::delete('/livros/{id}', [LivrosController::class, 'destroy'])->name('livro
 // aluguel livros
 Route::get('/aluguel-livros', [AluguelLivrosController::class, 'index'])->name('aluguel-livros');
 
+
 Route::post('/aluguel-livros', [AluguelLivrosController::class, 'store'])->name('aluguel-livros');
 
 Route::put('/aluguel-livros/{id}', [AluguelLivrosController::class, 'update'])->name('aluguel-livros');
 
 Route::delete('/aluguel-livros/{id}', [AluguelLivrosController::class, 'destroy'])->name('aluguel-livros');
+
+//LIVROS ATRASADOS
+Route::get('/aluguel-livros-atrasados', [AluguelLivrosController::class, 'livrosAtrasados'])->name('aluguel-livros-atrasados');
