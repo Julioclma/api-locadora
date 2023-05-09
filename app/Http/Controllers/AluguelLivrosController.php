@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AluguelLivros;
 use App\Models\Livros;
+use DateTime;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -69,33 +70,53 @@ class AluguelLivrosController extends Controller
     public function livrosAtrasados(): JsonResponse
     {
 
-        $alugadosNaoDevolvidos = AluguelLivros::where('devolvido', 0)->select('id')->get();
+        $alugadosNaoDevolvidos = AluguelLivros::where('devolvido', 0)->select('id')->get()->toArray();
+
+        $idsNaoDevolvidos = [];
+
+        $idsAtrasados = [];
 
         foreach ($alugadosNaoDevolvidos as $value) {
-
-            $retiradoEm = AluguelLivros::where('id', $value['id'])->select('created_at')->get();
-
-            foreach ($retiradoEm as $value) {
-
-                dd(print_r($value->date));
-
-            }
-
+            $idsNaoDevolvidos[] = $value['id'];
         }
 
+        $retiradoEmArr = AluguelLivros::whereIn('id', $idsNaoDevolvidos)->select('created_at')->get()->toArray();
 
+        $dataLimiteDevolucaoArr = AluguelLivros::whereIn('id', $idsNaoDevolvidos)->select('data_limite_devolucao')->get()->toArray();
 
+        $retiradoArrNew = [];
 
-        dd($idsNaoDevolvidos);
-        // var_dump($alugadosNaoDevolvidos);
-        //     foreach ($alugadosNaoDevolvidos as $value) {
-        // //    $date = date('YYYY/MM/DD', $alugadosNaoDevolvidos->created_At);
+        foreach ($retiradoEmArr as $key => $retiradoArr) {
+            $retiradoArrNew[] = $retiradoArr['created_at'];
+        }
 
-        //        dd($value[0]['attributes']);
-        //     }
+        $dataLimiteDevoArrNew = [];
 
+        foreach ($dataLimiteDevolucaoArr as $key => $dataLimiteArr) {
+            $dataLimiteDevoArrNew[] = $dataLimiteArr['data_limite_devolucao'];
+        }
 
-        //     dd($alugadosNaoDevolvidos[0]['attributes']);
-        //     return response()->json($alugadosNaoDevolvidos);
+        foreach ($idsNaoDevolvidos as $key => $value) {
+            date_default_timezone_set('America/Sao_Paulo');
+
+            // $dtTime = new DateTime($retiradoArrNew[$key]);
+            $dtTime2 = strtotime(($dataLimiteDevoArrNew[$key]));
+
+            $dateToday = time();
+
+            $interval = $dtTime2 - $dateToday;
+
+            if ($interval <= 0) {
+                $idsAtrasados[] = $value;
+            }
+        }
+
+        $atrasados = AluguelLivros::whereIn('id', $idsAtrasados)->get();
+
+        if (count($atrasados) > 0) {
+            return response()->json($atrasados);
+        }
+
+        return response()->json(["Message" => "Nenhum livro em atraso!"]);
     }
 }
