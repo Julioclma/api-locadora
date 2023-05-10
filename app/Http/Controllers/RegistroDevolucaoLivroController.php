@@ -34,7 +34,7 @@ class RegistroDevolucaoLivroController extends Controller
 
         $dateToday = date('Y-m-d');
 
-        $check = AluguelLivros::firstOrFail('id', $id)->update(['devolvido' => 1, 'data_devolvido' => $dateToday]);
+        $check = AluguelLivros::where('id', $id)->update(['devolvido' => 1, 'data_devolvido' => $dateToday]);
 
         if ($check) {
 
@@ -43,7 +43,7 @@ class RegistroDevolucaoLivroController extends Controller
 
             if ($check) {
 
-                $livroId = AluguelLivros::firstOrFail('id', $id)->select('fk_livro')->get();
+                $livroId = AluguelLivros::where('id', $id)->select('fk_livro')->get();
 
                 $livroId = $livroId[0]['fk_livro'];
 
@@ -51,7 +51,7 @@ class RegistroDevolucaoLivroController extends Controller
 
                 $quantity++;
 
-                $check = Livros::findOrFail($livroId)->update(['quantity' => $quantity]);
+                $check = Livros::where('id', $livroId)->update(['quantity' => $quantity]);
 
                 if ($check) {
 
