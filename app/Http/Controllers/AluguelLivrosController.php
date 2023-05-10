@@ -15,7 +15,7 @@ class AluguelLivrosController extends Controller
      */
     public function index()
     {
-        return response()->json(AluguelLivros::all());
+        return response()->json(AluguelLivros::where('devolvido', 0)->get());
     }
 
     /**
@@ -41,30 +41,6 @@ class AluguelLivrosController extends Controller
         }
 
         return response()->json(['message' => 'Não foi possivel registrar o aluguel']);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(AluguelLivros $aluguelLivros)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, AluguelLivros $aluguelLivros)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(AluguelLivros $aluguelLivros)
-    {
-        //
     }
 
     public function livrosAtrasados(): JsonResponse

@@ -33,22 +33,6 @@ class LivrosController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Livros $livros)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Livros $livros)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      */
     public function destroy($id): JsonResponse

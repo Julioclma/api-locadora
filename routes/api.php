@@ -3,6 +3,7 @@
 use App\Http\Controllers\AluguelLivrosController;
 use App\Http\Controllers\ApiSeriesController;
 use App\Http\Controllers\LivrosController;
+use App\Http\Controllers\RegistroDevolucaoLivroController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -51,3 +52,9 @@ Route::delete('/aluguel-livros/{id}', [AluguelLivrosController::class, 'destroy'
 
 //LIVROS ATRASADOS
 Route::get('/aluguel-livros-atrasados', [AluguelLivrosController::class, 'livrosAtrasados'])->name('aluguel-livros-atrasados');
+
+//Devolver livro
+Route::put('/registrar-devolucao/{id}', [RegistroDevolucaoLivroController::class, 'registrarDevolucao'])->name('registrar-devolucao');
+
+//devolvidos
+Route::get('/devolvidos', [RegistroDevolucaoLivroController::class, 'index'])->name('devolvidos');
