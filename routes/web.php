@@ -15,4 +15,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
+
+Route::get('/pessoas', function () {
+    return view('pessoas/pessoas');
+})->name('pessoas');
+
+Route::get('/livros', function () {
+    return view('livros/livros');
+})->name('livros');
+
+Route::get('/alugar-livro', function () {
+    return view('livros/alugar-livro');
+})->name('alugar-livro');
+
+Route::get('/livros-atrasados', function () {
+    return view('livros/livros-atrasados');
+})->name('livros-atrasados');
+
+Route::get('/livros-devolvidos', function () {
+    return view('livros/livros-devolvidos');
+})->name('livros-devolvidos');
