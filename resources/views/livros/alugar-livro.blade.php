@@ -18,7 +18,7 @@
         <nav>
             <div id="links">
                 <ul>
-                    <li><a href="#">Registrar retirada</a></li>
+                    <li><a href="{{route('registrar-retirada')}}">Registrar retirada</a></li>
 
                 </ul>
             </div>
@@ -84,7 +84,7 @@
                 <td>${data[key].fk_livro}</td>\
                 <td>${data[key].fk_user}</td>\
                 <td>${dataAtualFormatada(data[key].created_at)}</td>\
-                <td>${ dataAtualFormatada(data[key].data_limite_devolucao) }</td>\
+                <td>${dataAtualFormatada(data[key].data_limite_devolucao) }</td>\
             </tr>`);
     
     
@@ -96,7 +96,7 @@
 
         function dataAtualFormatada(data){
     var data = new Date(data),
-        dia  = data.getDate().toString().padStart(2, '0'),
+        dia  = data.getDate()+1,
         mes  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
         ano  = data.getFullYear();
     return dia+"/"+mes+"/"+ano;

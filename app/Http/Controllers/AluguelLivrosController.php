@@ -24,6 +24,9 @@ class AluguelLivrosController extends Controller
     public function store(Request $request): JsonResponse
     {
 
+        //formatando data
+        // $request->merge(['data_limite_devolucao' => date('Y-m-d', strtotime($request->data_limite_devolucao))]);
+
         $quantity = Livros::findOrFail($request->fk_livro)->quantity;
 
         $quantity--;

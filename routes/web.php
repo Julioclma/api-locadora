@@ -36,3 +36,7 @@ Route::get('/livros-atrasados', function () {
 Route::get('/livros-devolvidos', function () {
     return view('livros/livros-devolvidos');
 })->name('livros-devolvidos');
+
+Route::get('/registrar-retirada', function () {
+    return view('livros/registrar-retirada');
+})->name('registrar-retirada');
