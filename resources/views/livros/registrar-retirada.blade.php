@@ -51,23 +51,23 @@
         @csrf
         <div>
             <label>Livros: </label>
-        <select id="livros-disponiveis" name="fk_livro"><option value="null">Selecione o Livro:</option></select>
+        <select class="form-select form-control-sm" id="livros-disponiveis" name="fk_livro"><option value="null">Selecione o Livro:</option></select>
     </div>
 
     <div>
         <label>Pessoas: </label>
-    <select id="pessoas-cadastradas" name="fk_user"><option value="null">Selecione a Pessoa:</option></select>
+    <select class="form-select form-control-sm" id="pessoas-cadastradas" name="fk_user"><option value="null">Selecione a Pessoa:</option></select>
 </div>
 
 <div>
     <label>Devolver até dia: </label>
     
-<input type="date" name="data_limite_devolucao"/>
+<input class="form-control" type="date" name="data_limite_devolucao"/>
 
 <input hidden type="number" name="devolvido" value="0"/>
 </div>
 
-<button id="btn-registrar">Registrar retirada</button>
+<button id="btn-registrar" class="btn btn-primary">Registrar retirada</button>
     </form>
 </fieldset>
     <div id="message"></div>

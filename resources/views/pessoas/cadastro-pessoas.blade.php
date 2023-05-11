@@ -51,17 +51,17 @@
         @csrf
         <div>
             <label>Nome: </label>
-        <input type="text" name="name">
+        <input type="text" name="name" class="form-control" >
     </div>
 
     <div>
         <label>Email: </label>
-    <input type="text" name="email">
+    <input type="text" name="email" class="form-control" >
 </div>
 
 <div>
     <label>Idade: </label>
-<input type="number" name="age">
+<input type="number" name="age" class="form-control" >
 </div>
 
 <button class="btn btn-primary">Cadastrar Pessoa</button>

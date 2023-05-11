@@ -51,7 +51,7 @@
         @csrf
         <div>
             <label>Nome do Livro: </label>
-        <input type="text" name="name">
+        <input type="text" name="name" class="form-control">
     </div>
 
     <div>
