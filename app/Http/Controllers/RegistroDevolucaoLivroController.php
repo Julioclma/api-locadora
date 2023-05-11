@@ -21,7 +21,7 @@ class RegistroDevolucaoLivroController extends Controller
             $idsAluguelDevolvidos[] = $value['fk_aluguel'];
         }
 
-        return response()->json(AluguelLivros::whereIn('id', $idsAluguelDevolvidos)->get());
+        return response()->json(AluguelLivros::whereIn('id', $idsAluguelDevolvidos)->orderBy('id', 'desc')->get());
 
     }
 

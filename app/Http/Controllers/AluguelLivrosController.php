@@ -18,7 +18,7 @@ class AluguelLivrosController extends Controller
         $livrosAlugados = AluguelLivros::where('devolvido', 0)->get();
         
         if(count($livrosAlugados) > 0){
-            return response()->json(AluguelLivros::where('devolvido', 0)->get());
+            return response()->json(AluguelLivros::where('devolvido', 0)->orderBy('id', 'desc')->get());
         }
 
         return response()->json(['Message' => 'Nenhum livro alugado no momento!']);
@@ -97,7 +97,7 @@ class AluguelLivrosController extends Controller
             }
         }
 
-        $atrasados = AluguelLivros::whereIn('id', $idsAtrasados)->get();
+        $atrasados = AluguelLivros::whereIn('id', $idsAtrasados)->orderBy('id', 'desc')->get();
 
         if (count($atrasados) > 0) {
             return response()->json($atrasados);

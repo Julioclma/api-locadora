@@ -10,7 +10,7 @@ class ApiSeriesController extends Controller
 {
     public function index(): JsonResponse
     {
-        $data = Users::all();
+        $data = Users::orderBy('id', 'desc')->get();
 
         return response()->json($data, 200);
     }
@@ -19,7 +19,7 @@ class ApiSeriesController extends Controller
     {
 
         // $result = Users::firstOrCreate($request->all());
-        
+
         $result = Users::create($request->all());
 
 

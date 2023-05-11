@@ -13,7 +13,7 @@ class LivrosController extends Controller
      */
     public function index(): JsonResponse
     {
-        $livros = Livros::all();
+        $livros = Livros::orderBy('id', 'desc')->get();
 
         return response()->json($livros);
     }
