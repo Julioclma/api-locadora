@@ -38,7 +38,7 @@ nav{
 
 </header>
 
-<table>
+<table class="table">
     <thead>
         <th>#Id</th>
         <th>Nome</th>

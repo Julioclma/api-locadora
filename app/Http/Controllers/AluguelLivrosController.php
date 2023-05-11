@@ -13,9 +13,16 @@ class AluguelLivrosController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index() : JsonResponse
     {
-        return response()->json(AluguelLivros::where('devolvido', 0)->get());
+        $livrosAlugados = AluguelLivros::where('devolvido', 0)->get();
+        
+        if(count($livrosAlugados) > 0){
+            return response()->json(AluguelLivros::where('devolvido', 0)->get());
+        }
+
+        return response()->json(['Message' => 'Nenhum livro alugado no momento!']);
+
     }
 
     /**

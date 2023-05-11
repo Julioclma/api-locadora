@@ -41,7 +41,7 @@
     </header>
     
     <div id="message"></div>
-    <table class="disable">
+    <table class="disable table">
         <thead>
             <th>#Id</th>
             <th>ID livro</th>
