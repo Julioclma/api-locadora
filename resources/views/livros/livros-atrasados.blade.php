@@ -184,7 +184,7 @@ $("#btn-add-confirma").html(`<a class="btn btn-primary" onclick="confirmarDevolu
         
     
     //REQUEST API PARA CONSUMIR ALUGUEL LIVROS
-        const url = "http://127.0.0.1:8000/api/aluguel-livros";
+        const url = "http://127.0.0.1:8000/api/aluguel-livros-atrasados";
     
         const response = fetch(url)
             .then(response => response.json()
