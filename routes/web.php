@@ -37,6 +37,14 @@ Route::get('/livros-devolvidos', function () {
     return view('livros/livros-devolvidos');
 })->name('livros-devolvidos');
 
+Route::get('/cadastrar-livro', function () {
+    return view('livros/cadastrar-livro');
+})->name('cadastrar-livro');
+
 Route::get('/registrar-retirada', function () {
     return view('livros/registrar-retirada');
 })->name('registrar-retirada');
+
+Route::get('/cadastro-pessoas', function () {
+    return view('pessoas/cadastro-pessoas');
+})->name('cadastro-pessoas');

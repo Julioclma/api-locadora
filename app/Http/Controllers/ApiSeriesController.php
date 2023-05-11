@@ -18,7 +18,10 @@ class ApiSeriesController extends Controller
     public function create(Request $request): JsonResponse
     {
 
-        $result = Users::firstOrCreate($request->all());
+        // $result = Users::firstOrCreate($request->all());
+        
+        $result = Users::create($request->all());
+
 
         if ($result) {
             return response()->json(['message' => 'Usuário criado com sucesso'], 201);

@@ -6,21 +6,28 @@
         display: flex;
         justify-content: space-between;
     }
+
+    form div{
+        padding: 15px 0;
+        display: flex;
+        flex-direction: column;
+    }
+
     </style>
     
     
-    <h1>Livros</h1>
+    <h1>Cadastrar livro...</h1>
     
     <header>
     
         <nav>
             <div id="links">
                 <ul>
-                    <li><a href="{{route('cadastrar-livro')}}">Cadastrar Livro</a></li>
 
                 </ul>
             </div>
     
+            
             <div id="links-to-actions"> 
                 <ul>
                     <li><a href="{{route('home')}}">Home</a>
@@ -38,47 +45,38 @@
     
     </header>
     
-    <table class="table table-striped">
-        <thead>
-            <th scope="col">#Id</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Quantidade</th>
-        </thead>
-        <tbody>
-        
-        </tbody>
-    </table>
+    <fieldset>
+    <legend>Cadastrar Livro</legend>
+    <form id="#form-registrar-pessoa" action="http://127.0.0.1:8000/api/livros" method="POST">
+        @csrf
+        <div>
+            <label>Nome do Livro: </label>
+        <input type="text" name="name">
+    </div>
+
+    <div>
+        <label>Quantidade: </label>
+    <select name="quantity" id="quantidade-livro" class="form-select form-select-sm" aria-label=".form-select-sm example"> 
+
+    </select>
+
+</div>
+
+
+
+<button class="btn btn-primary">Cadastrar Livro</button>
+    </form>
+</fieldset>
+    <div id="message"></div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script>
-    
-    
-    //REQUEST API PARA CONSUMIR LIVROS
-        const url = "http://127.0.0.1:8000/api/livros";
-    
-        const response = fetch(url)
-            .then(response => response.json()
-                .then(data => list(data)));
-                
-        function list(data) {
-    
-          
-    
-            for (const key in data) {
-                $("table tbody").append(`<tr>
-                <td scope="row">${data[key].id}</td>\
-                <td>${data[key].name}</td>\
-                <td>${data[key].quantity}</td>\
-            </tr>`);
-    
-    
-            }
-        }
-    
-        list();
-        //FINAL LIVROS
-    
-    
+
+    for (let i = 0; i <= 100; i++) {
+                        $("#quantidade-livro").append(`<option value="${i}">${i}</option>`);
+                }
+  
+
     </script>

@@ -16,7 +16,7 @@ nav{
     <nav>
         <div id="links">
             <ul>
-                <li><a href="#">Cadastrar Pessoa</a></li>
+                <li><a href="{{route('cadastro-pessoas')}}">Cadastrar Pessoa</a></li>
             </ul>
         </div>
 
@@ -28,7 +28,7 @@ nav{
                 <li><a href="{{route('livros')}}">Livros</a></li>
                 <li><a href="{{route('alugar-livro')}}">Livros Alugados</a></li>
                 <li><a href="{{route('livros-atrasados')}}">Livros Em atraso</a></li>
-                <li><a href="{{route('livros-devolvidos')}}">Livros Devolvidos</a></li>
+                <li><a href="{{route('livros-devolvidos')}}">Registro de Devoluções</a></li>
             </ul>
     </div>
       
