@@ -60,14 +60,14 @@ padding: 10px 0;
     </header>
     
     <div id="message"></div>
-    <table class="disable table">
+    <table class="disable table table-striped">
         <thead>
-            <th>#Id</th>
-            <th>ID livro</th>
-            <th>ID pessoa</th>
-            <th>Retirado EM</th>
-            <th>Data Limite para Devolução</th>
-<th>Ações</th>
+            <th scope="col">#Id Aluguel</th>
+            <th scope="col">ID livro</th>
+            <th scope="col">ID pessoa</th>
+            <th scope="col">Retirado EM</th>
+            <th scope="col">Data Limite para Devolução</th>
+<th scope="col">Ações</th>
         </thead>
         <tbody>
         
@@ -119,8 +119,8 @@ padding: 10px 0;
       </div>
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script>
         $(function() {
@@ -206,7 +206,7 @@ $("#btn-add-confirma").html(`<a class="btn btn-primary" onclick="confirmarDevolu
 
             for (const key in data) {
                 $("table tbody").append(`<tr>
-                <td>${data[key].id}</td>\
+                <th scope="row">${data[key].id}</th>\
                 <td>${data[key].fk_livro}</td>\
                 <td>${data[key].fk_user}</td>\
                 <td>${dataAtualFormatada(data[key].created_at)}</td>\

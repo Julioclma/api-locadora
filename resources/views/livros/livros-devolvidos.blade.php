@@ -41,13 +41,13 @@
     </header>
     
     <div id="message"></div>
-    <table class="disable table">
+    <table class="disable table table-striped">
         <thead>
-            <th>#Id</th>
-            <th>ID livro</th>
-            <th>ID pessoa</th>
-            <th>Retirado EM</th>
-            <th>Devolvido EM</th>
+            <th scope="col">#Id</th>
+            <th scope="col">ID livro</th>
+            <th scope="col">ID pessoa</th>
+            <th scope="col">Retirado EM</th>
+            <th scope="col">Devolvido EM</th>
 
         </thead>
         <tbody>
@@ -81,7 +81,7 @@
 
             for (const key in data) {
                 $("table tbody").append(`<tr>
-                <td>${data[key].id}</td>\
+                <td scope="row">${data[key].id}</td>\
                 <td>${data[key].fk_livro}</td>\
                 <td>${data[key].fk_user}</td>\
                 <td>${dataAtualFormatada(data[key].created_at)}</td>\

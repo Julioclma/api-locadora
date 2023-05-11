@@ -38,11 +38,11 @@
     
     </header>
     
-    <table class="table">
+    <table class="table table-striped">
         <thead>
-            <th>#Id</th>
-            <th>Nome</th>
-            <th>Quantidade</th>
+            <th scope="col">#Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Quantidade</th>
         </thead>
         <tbody>
         
@@ -68,7 +68,7 @@
     
             for (const key in data) {
                 $("table tbody").append(`<tr>
-                <td>${data[key].id}</td>\
+                <td scope="row">${data[key].id}</td>\
                 <td>${data[key].name}</td>\
                 <td>${data[key].quantity}</td>\
             </tr>`);

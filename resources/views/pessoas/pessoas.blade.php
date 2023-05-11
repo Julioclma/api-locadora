@@ -38,12 +38,12 @@ nav{
 
 </header>
 
-<table class="table">
+<table class="table table-striped">
     <thead>
-        <th>#Id</th>
-        <th>Nome</th>
-        <th>Email</th>
-        <th>Idade</th>
+        <th scope="col">#Id</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Email</th>
+        <th scope="col">Idade</th>
     </thead>
     <tbody>
       
@@ -67,7 +67,7 @@ nav{
 
         for (const key in data) {
             $("table tbody").append(`<tr>
-            <td>${data[key].id}</td>\
+            <td scope="row">${data[key].id}</td>\
             <td>${data[key].name}</td>\
             <td>${data[key].email}</td>\
             <td>${data[key].age}</td>\
