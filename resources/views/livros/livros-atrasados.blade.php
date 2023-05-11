@@ -26,6 +26,16 @@ padding: 10px 0;
         .modal-body input{
             padding: 5px;
         }
+        .modal-footer{
+            display: flex;
+            justify-content: space-between
+        }
+        #container-btns-right{
+            display: flex;
+        }
+        #btn-add-confirma{
+            margin-left: 5px;
+        }
     </style>
     
     
@@ -105,11 +115,18 @@ padding: 10px 0;
         </div>
         </div>
         <div class="modal-footer">
-          <div>
-            <button type="button" class="btn btn-secondary btn-close-devolucao" data-dismiss="modal">Fechar</button>
+        <div>
+           <button type="button" class="btn btn-danger" data-dismiss="modal">Notificar</button>
         </div>
-          <div id="btn-add-confirma">
-            <a type="button" class="btn btn-primary" onclick="confirmarDevolucao()">Confirmar Devolução</a>
+        <div id="container-btns-right">
+
+            <div>
+              <button type="button" class="btn btn-secondary btn-close-devolucao" data-dismiss="modal">Fechar</button>
+          </div>
+            <div id="btn-add-confirma">
+              <a type="button" class="btn btn-primary" onclick="confirmarDevolucao()">Confirmar Devolução</a>
+          </div>
+
         </div>
         </div>
       </div>

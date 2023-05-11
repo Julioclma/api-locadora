@@ -13,16 +13,15 @@ class AluguelLivrosController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index() : JsonResponse
+    public function index(): JsonResponse
     {
         $livrosAlugados = AluguelLivros::where('devolvido', 0)->get();
-        
-        if(count($livrosAlugados) > 0){
+
+        if (count($livrosAlugados) > 0) {
             return response()->json(AluguelLivros::where('devolvido', 0)->orderBy('id', 'desc')->get());
         }
 
         return response()->json(['Message' => 'Nenhum livro alugado no momento!']);
-
     }
 
     /**
@@ -71,7 +70,7 @@ class AluguelLivrosController extends Controller
         $dataLimiteDevolucaoArr = AluguelLivros::whereIn('id', $idsNaoDevolvidos)->select('data_limite_devolucao')->get()->toArray();
 
         $retiradoArrNew = [];
-
+        
         foreach ($retiradoEmArr as $key => $retiradoArr) {
             $retiradoArrNew[] = $retiradoArr['created_at'];
         }
