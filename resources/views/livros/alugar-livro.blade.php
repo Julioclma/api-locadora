@@ -21,7 +21,7 @@
         <nav>
             <div id="links">
                 <ul>
-                    <li><a href="{{route('registrar-retirada')}}">Registrar retirada</a></li>
+                    <li><a href="{{route('registrar-retirada')}}">Registrar Aluguel</a></li>
 
                 </ul>
             </div>
