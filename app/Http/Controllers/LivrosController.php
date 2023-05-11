@@ -45,4 +45,15 @@ class LivrosController extends Controller
 
         return response()->json(['message' => 'Não foi possivel deletar o livro!'], 404);
     }
+
+    public function show($id): JsonResponse
+    {
+        $content = Livros::findOrFail($id);
+
+        if ($content) {
+            return response()->json($content);
+        }
+
+        return response()->json(['Message' => 'Livro não encontrado!']);
+    }
 }

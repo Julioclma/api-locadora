@@ -29,6 +29,8 @@ Route::post('/persons', [ApiSeriesController::class, 'create'])->name('persons')
 
 Route::put('/persons/{id}', [ApiSeriesController::class, 'update'])->name('persons');
 
+Route::get('/persons/{id}', [ApiSeriesController::class, 'show'])->name('persons');
+
 Route::delete('/persons/{id}', [ApiSeriesController::class, 'destroy'])->name('persons');
 
 // livros
@@ -37,6 +39,8 @@ Route::get('/livros', [LivrosController::class, 'index'])->name('livros');
 Route::post('/livros', [LivrosController::class, 'store'])->name('livros');
 
 Route::put('/livros/{id}', [LivrosController::class, 'update'])->name('livros');
+
+Route::get('/livros/{id}', [LivrosController::class, 'show'])->name('livros');
 
 Route::delete('/livros/{id}', [LivrosController::class, 'destroy'])->name('livros');
 
@@ -53,7 +57,7 @@ Route::delete('/aluguel-livros/{id}', [AluguelLivrosController::class, 'destroy'
 //LIVROS ATRASADOS
 Route::get('/aluguel-livros-atrasados', [AluguelLivrosController::class, 'livrosAtrasados'])->name('aluguel-livros-atrasados');
 
-//Devolver livro
+//Devolver livro (id = id do aluguel)
 Route::put('/registrar-devolucao/{id}', [RegistroDevolucaoLivroController::class, 'registrarDevolucao'])->name('registrar-devolucao');
 
 //devolvidos

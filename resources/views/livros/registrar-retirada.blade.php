@@ -31,9 +31,9 @@
                     <li><a href="{{route('home')}}">Home</a>
                     <li><a href="{{route('pessoas')}}">Pessoas</a></li>
                     <li><a href="{{route('livros')}}">Livros</a></li>
-                    <li><a href="{{route('alugar-livro')}}">Retirar Livro</a></li>
+                    <li><a href="{{route('alugar-livro')}}">Livros Alugados</a></li>
                     <li><a href="{{route('livros-atrasados')}}">Livros Em atraso</a></li>
-                    <li><a href="{{route('livros-devolvidos')}}">Devolver Livro</a></li>
+                    <li><a href="{{route('livros-devolvidos')}}">Livros Devolvidos</a></li>
                 </ul>
         </div>
           
@@ -101,38 +101,4 @@
             }
     //FINAL PESSOAS
 
-//     $("#btn-registrar").click(function(e){
-//         e.preventDefault();
-
-//         const form = $("#form-registrar-retirada").serialize();
-
-
-// fetch("http://127.0.0.1:8000/api/aluguel-livros", {
-   
-//   method: "POST",
-//   body: JSON.stringify(form),
-//   headers: {"Content-type": "application/json; charset=UTF-8"}
-// })
-// .then(response => response.json()) // Converter a resposta em json
-// .then(json => console.log(json)); // Mostrando a resposta no console
-//     });
-    
-    $("#form-registrar-retirada").on("submit", function(e){
-
-        e.preventDefault();
-
-const form = $(this).serialize();
-
-console.log(JSON.stringify(form));
-// fetch("http://127.0.0.1:8000/api/aluguel-livros", {
-   
-//   method: "POST",
-//   body: JSON.stringify(form),
-//   headers: {"Content-type": "application/json; charset=UTF-8"}
-// })
-// .then(response => response.json()) // Converter a resposta em json
-// .then(json => console.log(json)); // Mostrando a resposta no console
-
-        });
-    
     </script>

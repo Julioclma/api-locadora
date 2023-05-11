@@ -39,6 +39,16 @@ class ApiSeriesController extends Controller
         return response()->json(['message' => 'Usuário Não atualizado!'], 404);
     }
 
+    public function show($id): JsonResponse
+    {
+        $content = Users::findOrFail($id);
+
+        if ($content) {
+            return response()->json($content);
+        }
+
+        return response()->json(['Message' => 'Usuário não encontrado!']);
+    }
     public function destroy($id): JsonResponse
     {
 

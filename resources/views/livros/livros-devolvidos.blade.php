@@ -29,9 +29,9 @@
                     <li><a href="{{route('home')}}">Home</a>
                     <li><a href="{{route('pessoas')}}">Pessoas</a></li>
                     <li><a href="{{route('livros')}}">Livros</a></li>
-                    <li><a href="{{route('alugar-livro')}}">Retirar Livro</a></li>
+                    <li><a href="{{route('alugar-livro')}}">Livros Alugados</a></li>
                     <li><a href="{{route('livros-atrasados')}}">Livros Em atraso</a></li>
-                    <li><a href="{{route('livros-devolvidos')}}">Devolver Livro</a></li>
+                    <li><a href="{{route('livros-devolvidos')}}">Livros Devolvidos</a></li>
                 </ul>
         </div>
           
@@ -84,7 +84,7 @@
                 <td>${data[key].fk_livro}</td>\
                 <td>${data[key].fk_user}</td>\
                 <td>${dataAtualFormatada(data[key].created_at)}</td>\
-                <td>${dataAtualFormatada(data[key].data_devolvido)}</td>\
+                <td>${data[key].data_devolvido}</td>\
             </tr>`);
     
     
@@ -95,10 +95,10 @@
         //FINAL LIVROS
 
         function dataAtualFormatada(data){
-    var data = new Date(data),
-        dia  = data.getDate().toString().padStart(2, '0'),
-        mes  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
-        ano  = data.getFullYear();
+            data = new Date(data);
+ano = data.getFullYear();
+mes = data.getMonth() + 1;
+dia = data.getDate();
     return dia+"/"+mes+"/"+ano;
 }
     

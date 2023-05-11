@@ -24,9 +24,9 @@
                     <li><a href="{{route('home')}}">Home</a>
                     <li><a href="{{route('pessoas')}}">Pessoas</a></li>
                     <li><a href="{{route('livros')}}">Livros</a></li>
-                    <li><a href="{{route('alugar-livro')}}">Retirar Livro</a></li>
+                    <li><a href="{{route('alugar-livro')}}">Livros Alugados</a></li>
                     <li><a href="{{route('livros-atrasados')}}">Livros Em atraso</a></li>
-                    <li><a href="{{route('livros-devolvidos')}}">Devolver Livro</a></li>
+                    <li><a href="{{route('livros-devolvidos')}}">Livros Devolvidos</a></li>
                 </ul>
         </div>
           
