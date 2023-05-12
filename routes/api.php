@@ -4,6 +4,7 @@ use App\Http\Controllers\AluguelLivrosController;
 use App\Http\Controllers\ApiSeriesController;
 use App\Http\Controllers\LivrosController;
 use App\Http\Controllers\RegistroDevolucaoLivroController;
+use App\Mail\MailAtrasado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -62,3 +63,8 @@ Route::put('/registrar-devolucao/{id}', [RegistroDevolucaoLivroController::class
 
 //devolvidos
 Route::get('/devolvidos', [RegistroDevolucaoLivroController::class, 'index'])->name('devolvidos');
+
+Route::post('/email-atrasado', function(Request $request){
+    Mail::to($request->email)->send(new MailAtrasado);
+    return view('email-atrasado',compact('request'));
+});
