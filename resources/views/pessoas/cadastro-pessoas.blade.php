@@ -2,11 +2,6 @@
 
 <style>
 
-    nav{ 
-        display: flex;
-        justify-content: space-between;
-    }
-
     form div{
         padding: 15px 0;
         display: flex;
