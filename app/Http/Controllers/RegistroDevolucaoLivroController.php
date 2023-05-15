@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MailLivroDevolvido;
 use App\Models\AluguelLivros;
 use App\Models\Livros;
 use App\Models\RegistroDevolucaoLivro;
+use App\Models\Users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class RegistroDevolucaoLivroController extends Controller
 {
@@ -22,7 +25,6 @@ class RegistroDevolucaoLivroController extends Controller
         }
 
         return response()->json(AluguelLivros::whereIn('id', $idsAluguelDevolvidos)->orderBy('id', 'desc')->get());
-
     }
 
     /**
@@ -54,6 +56,14 @@ class RegistroDevolucaoLivroController extends Controller
                 $check = Livros::where('id', $livroId)->update(['quantity' => $quantity]);
 
                 if ($check) {
+
+                    $fkUser = AluguelLivros::where('id', $id)->select('fk_user')->get();
+
+                    $user =  Users::where('id', $fkUser[0]['fk_user'])->get();
+
+                    $livroName = Livros::where('id', $livroId)->select('name')->get();
+
+                    Mail::to($user[0]['email'])->send(new MailLivroDevolvido($livroName[0]['name'], $user[0]['name']));
 
                     return response()->json(['message' => 'Livro devolvivo com sucesso']);
                 }

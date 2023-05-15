@@ -9,19 +9,21 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class MailAtrasado extends Mailable
+class MailLivroDevolvido extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public string $nome;
     public string $livro;
+    public string $usuarioName;
+
     /**
      * Create a new message instance.
      */
-    public function __construct(string $nome, string $livro)
+    public function __construct(string $livro, string $usuarioName)
     {
-        $this->nome = $nome;
         $this->livro = $livro;
+        $this->usuarioName = $usuarioName;
+
     }
 
     /**
@@ -30,7 +32,7 @@ class MailAtrasado extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Você tem livro Atrasado na Biblioteca',
+            subject: 'Livro Devolvido com Sucesso',
         );
     }
 
@@ -40,9 +42,9 @@ class MailAtrasado extends Mailable
     public function content(): Content
     {
         return new Content(
-            htmlString: "<h2>Olá, Tudo bem? ". $this->nome."</h3><br><br>
-<h3>Estamos aguardando a devolução do livro  '".$this->livro."'</h3>
-<h3>Ficamos gratos pela compreensão :)</h3>"
+            htmlString: "<h2>Olá, ".$this->usuarioName."</h2><br>
+<h3>Agradecemos pela devolução do livro  '".$this->livro."'</h3>
+<h3>Ficamos felizes por optar em alugal conosco, viva a leitura :)</h3>"
         );
     }
 

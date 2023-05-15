@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MailLivroRetirado;
 use App\Models\AluguelLivros;
 use App\Models\Livros;
+use App\Models\Users;
 use DateTime;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AluguelLivrosController extends Controller
 {
@@ -30,9 +33,6 @@ class AluguelLivrosController extends Controller
     public function store(Request $request): JsonResponse
     {
 
-        //formatando data
-        // $request->merge(['data_limite_devolucao' => date('Y-m-d', strtotime($request->data_limite_devolucao))]);
-
         $quantity = Livros::findOrFail($request->fk_livro)->quantity;
 
         $quantity--;
@@ -44,6 +44,13 @@ class AluguelLivrosController extends Controller
             if ($create) {
 
                 Livros::findOrFail($request->fk_livro)->update(['quantity' => $quantity]);
+
+                $user = Users::where('id', $request->fk_user)->get();
+
+                $livro = Livros::where('id', $request->fk_livro)->get();
+
+                 Mail::to($user[0]['email'])->send(new MailLivroRetirado($user[0]['name'], $livro[0]['name'], $request->data_limite_devolucao));
+
 
                 return response()->json(['message' => 'aluguel registrado com sucesso']);
             }
@@ -70,7 +77,7 @@ class AluguelLivrosController extends Controller
         $dataLimiteDevolucaoArr = AluguelLivros::whereIn('id', $idsNaoDevolvidos)->select('data_limite_devolucao')->get()->toArray();
 
         $retiradoArrNew = [];
-        
+
         foreach ($retiradoEmArr as $key => $retiradoArr) {
             $retiradoArrNew[] = $retiradoArr['created_at'];
         }
