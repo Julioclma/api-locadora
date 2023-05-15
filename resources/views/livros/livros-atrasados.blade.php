@@ -115,8 +115,8 @@ padding: 10px 0;
         </div>
         </div>
         <div class="modal-footer">
-        <div>
-           <button type="button" class="btn btn-danger" data-dismiss="modal">Notificar</button>
+        <div id="btn-notificacao-atraso">
+           <button id="notificarAtraso" type="button" class="btn btn-danger" data-dismiss="modal">Notificar</button>
         </div>
         <div id="container-btns-right">
 
@@ -132,16 +132,53 @@ padding: 10px 0;
       </div>
     </div>
   </div>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script>
         $(function() {
+        
+           $("#notificarAtraso").on('click', function(){
+
+                const livro = $("#nome-livro").val();
+    
+    const nome = $("#nome-pessoa").val();
+    
+    const email = $("#email-pessoa").val();
+
+    const url = `http://127.0.0.1:8000/api/email-atrasado`;
+
+    const postMethod = {
+ method: 'POST',
+ headers: {
+  'Content-type': 'application/json; charset=UTF-8'
+ },
+ body: JSON.stringify({nome : nome,
+    livro: livro,
+email: email})
+}
+
+fetch(url, postMethod)
+.then(response => response.json())
+.then(data => catchMessage(data)) // Manipulate the data retrieved back, if we want to do something with it
+.catch(err => console.log(err)) // Do something with the error
 
 
+});
+
+function catchMessage(data)
+{
+    if(data.status !== 'error'){
+        swal(`${data.message}`, " ", "success");
+        return;
+    }
+    swal(`${data.message}`, " ", "error");
+
+}
             $(".btn-close-devolucao").on('click', function(){
                 $("#ModalDevolucao").modal('hide');
-            })
+            });
          
             
             window.confirmarDevolucao = function(idAluguel){
@@ -166,7 +203,7 @@ fetch(url, putMethod)
         window.abrirModalDevolucao = function(idAluguel, idLivro, idUsuario){
         const url = `http://127.0.0.1:8000/api/livros/${idLivro}`;
     
-   fetch(url).then(response => response.json().then(data => livro(data)));
+ fetch(url).then(response => response.json().then(data => livro(data)));
 
             function livro(data){
                 $("#nome-livro").val(data.name);
@@ -174,24 +211,35 @@ fetch(url, putMethod)
 
             const urlPessoa = `http://127.0.0.1:8000/api/persons/${idUsuario}`;
 
-            fetch(urlPessoa).then(response => response.json().then(data => pessoa(data)));
+             fetch(urlPessoa).then(response => response.json().then(data => pessoa(data)));
 
 function pessoa(data){
     $("#nome-pessoa").val(data.name);
     $("#email-pessoa").val(data.email);
 }
 
-date = new Date();
-year = date.getFullYear();
-month = date.getMonth() + 1;
-day = date.getDate();
+const date = new Date();
 
-$("#data-devolucao").val(day+"/"+month+"/"+year);
+const completeDate = date.getDate();+"/"+date.getMonth() + 1+"/"+date.getFullYear();
+
+$("#data-devolucao").val(completeDate);
 
     $("#ModalDevolucao").modal('show');
     
+    const nomeLivro = $("#nome-livro").val();
+    
+    const nomePessoa = $("#nome-pessoa").val();
+    
+    const emailPessoa = $("#email-pessoa").val();
+
+    // $("#btn-notificacao-atraso").html(`<button onclick="notificarAtraso(${nomeLivro}, ${nomePessoa}, ${emailPessoa})" type="button" class="btn btn-danger" data-dismiss="modal">Notificar</button>`);
+    
 $("#btn-add-confirma").html(`<a class="btn btn-primary" onclick="confirmarDevolucao(${idAluguel})">Confirmar Devolução</a>`);
 
+}
+
+function btnNotifica(nomeLivro, nomePessoa, emailPessoa){
+    $("#btn-notificacao-atraso").html(`<button onclick="notificarAtraso(${nomeLivro}, ${nomePessoa}, ${emailPessoa})" type="button" class="btn btn-danger" data-dismiss="modal">Notificar</button>`);
 }
         
     

@@ -65,6 +65,12 @@ Route::put('/registrar-devolucao/{id}', [RegistroDevolucaoLivroController::class
 Route::get('/devolvidos', [RegistroDevolucaoLivroController::class, 'index'])->name('devolvidos');
 
 Route::post('/email-atrasado', function(Request $request){
-    Mail::to($request->email)->send(new MailAtrasado);
-    return view('email-atrasado',compact('request'));
+
+   $check = Mail::to($request->email)->send(new MailAtrasado($request->nome, $request->livro));
+
+   if($check){
+    return response()->json(['status' => 'success', 'message' => 'Email enviado com sucesso!']);
+   }
+
+   return ['status' => 'error', 'message' => 'Erro ao enviar email!'];
 });

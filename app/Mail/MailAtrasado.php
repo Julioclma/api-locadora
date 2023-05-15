@@ -13,12 +13,15 @@ class MailAtrasado extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public string $nome;
+    public string $livro;
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(string $nome, string $livro)
     {
-        //
+        $this->nome = $nome;
+        $this->livro = $livro;
     }
 
     /**
@@ -37,7 +40,7 @@ class MailAtrasado extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'email-atrasado',
+            htmlString: "Olá, ".$this->nome.". A devolução do livro ".$this->livro." encontra-se pendente!"
         );
     }
 
