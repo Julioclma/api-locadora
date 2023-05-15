@@ -9,28 +9,9 @@
     </style>
     
     
-    <h1>Biblioteca Digital</h1>
-    <header>
-    
-        <nav>
-           
-    
-            <div id="links-to-actions"> 
-                <ul>
-                    <li><a href="{{route('home')}}">Home</a>
-                    <li><a href="{{route('pessoas')}}">Pessoas</a></li>
-                    <li><a href="{{route('livros')}}">Livros</a></li>
-                    <li><a href="{{route('alugar-livro')}}">Livros Alugados</a></li>
-                    <li><a href="{{route('livros-atrasados')}}">Livros Em atraso</a></li>
-                    <li><a href="{{route('livros-devolvidos')}}">Registro de Devoluções</a></li>
-                </ul>
-        </div>
-          
-        </nav>
-    
-       
-    
-    </header>
+@include('header')
+   
+   
     
 
 {{-- <form>

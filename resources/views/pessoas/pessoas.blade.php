@@ -9,46 +9,26 @@ nav{
 </style>
 
 
-<h1>Pessoas</h1>
+       
 
-<header>
-
-    <nav>
-        <div id="links">
-            <ul>
-                <li><a href="{{route('cadastro-pessoas')}}">Cadastrar Pessoa</a></li>
-            </ul>
+        @include('header')
+        <h2>Usuários</h2>
+        <div class="col-sm p-3 min-vh-100">
+    <table class="table table-striped">
+        <thead>
+            <th scope="col">#Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Idade</th>
+        </thead>
+        <tbody>
+          
+        </tbody>
+    </table>
         </div>
 
-        
-        <div id="links-to-actions"> 
-            <ul>
-                <li><a href="{{route('home')}}">Home</a>
-                <li><a href="{{route('pessoas')}}">Pessoas</a></li>
-                <li><a href="{{route('livros')}}">Livros</a></li>
-                <li><a href="{{route('alugar-livro')}}">Livros Alugados</a></li>
-                <li><a href="{{route('livros-atrasados')}}">Livros Em atraso</a></li>
-                <li><a href="{{route('livros-devolvidos')}}">Registro de Devoluções</a></li>
-            </ul>
     </div>
-      
-    </nav>
-
-   
-
-</header>
-
-<table class="table table-striped">
-    <thead>
-        <th scope="col">#Id</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Email</th>
-        <th scope="col">Idade</th>
-    </thead>
-    <tbody>
-      
-    </tbody>
-</table>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 

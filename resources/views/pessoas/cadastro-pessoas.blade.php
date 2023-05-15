@@ -14,39 +14,16 @@
     }
 
     </style>
-    
-    
-    <h1>Cadastrar pessoa...</h1>
-    
-    <header>
-    
-        <nav>
-            <div id="links">
-                <ul>
+            @include('header')
 
-                </ul>
-            </div>
+
     
+    <div class="col-sm p-3 min-vh-100">
             
-            <div id="links-to-actions"> 
-                <ul>
-                    <li><a href="{{route('home')}}">Home</a>
-                    <li><a href="{{route('pessoas')}}">Pessoas</a></li>
-                    <li><a href="{{route('livros')}}">Livros</a></li>
-                    <li><a href="{{route('alugar-livro')}}">Livros Alugados</a></li>
-                    <li><a href="{{route('livros-atrasados')}}">Livros Em atraso</a></li>
-                    <li><a href="{{route('livros-devolvidos')}}">Registro de Devoluções</a></li>
-                </ul>
-        </div>
-          
-        </nav>
-    
-       
-    
-    </header>
-    
+    <h2>Cadastrar pessoa...</h2>
+
+
     <fieldset>
-    <legend>Registrar Pessoa</legend>
     <form id="#form-registrar-pessoa" action="http://127.0.0.1:8000/api/persons" method="POST">
         @csrf
         <div>
@@ -68,6 +45,11 @@
     </form>
 </fieldset>
     <div id="message"></div>
+
+</div>
+
+</div>
+</div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 

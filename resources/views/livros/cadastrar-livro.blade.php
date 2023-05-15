@@ -15,38 +15,17 @@
 
     </style>
     
-    
-    <h1>Cadastrar livro...</h1>
-    
-    <header>
-    
-        <nav>
-            <div id="links">
-                <ul>
+    @include('header')
 
-                </ul>
-            </div>
+
     
-            
-            <div id="links-to-actions"> 
-                <ul>
-                    <li><a href="{{route('home')}}">Home</a>
-                    <li><a href="{{route('pessoas')}}">Pessoas</a></li>
-                    <li><a href="{{route('livros')}}">Livros</a></li>
-                    <li><a href="{{route('alugar-livro')}}">Livros Alugados</a></li>
-                    <li><a href="{{route('livros-atrasados')}}">Livros Em atraso</a></li>
-                    <li><a href="{{route('livros-devolvidos')}}">Registro de Devoluções</a></li>
-                </ul>
-        </div>
-          
-        </nav>
+    <div class="col-sm p-3 min-vh-100">
+    <h2>Cadastrar livro...</h2>
     
-       
-    
-    </header>
+
     
     <fieldset>
-    <legend>Cadastrar Livro</legend>
+
     <form id="#form-registrar-pessoa" action="http://127.0.0.1:8000/api/livros" method="POST">
         @csrf
         <div>
@@ -68,11 +47,13 @@
     </form>
 </fieldset>
     <div id="message"></div>
+
+</div></div></div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-    
+
     <script>
 
     for (let i = 0; i <= 100; i++) {
